@@ -1,0 +1,27 @@
+<div class="page">
+  <div class="header green">
+    <div class="left">
+      <button class="icon ion-android-arrow-back" onclick="backPage()"></button>
+    </div>
+    <h1 class="title align-center">Detalhes da planta</h1>
+  </div>
+  <div class="content has-header">
+    <div class="list padding no-border" id="formDetalhesPlanta">
+      <div class="item icon ion-leaf">
+        <input type="text" id="nomeCientifico" placeholder="Nome Científico">
+      </div>
+      <div class="item icon ion-earth">
+        <input type="text" id="dominio" placeholder="Domínio">
+      </div>
+      <div class="item icon ion-ios-nutrition">
+        <input type="text" id="classificacao" placeholder="Classificação">
+      </div>
+      <div class="item">
+        <button class="red radius full" onclick="deletarPlanta()">Remover</button>
+      </div>
+      <div class="item">
+        <button class="green radius full" onclick="alterarPlanta()">Salvar</button>
+      </div>
+    </div>
+  </div>
+</div>

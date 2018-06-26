@@ -1,0 +1,25 @@
+<div class="page">
+  <div class="header green">
+    <h1 class="title align-center">
+      <strong>Cátalogo</strong>
+    </h1>
+    <div class="right">
+      <button class="icon ion-android-exit" onclick="backPage()"></button>
+    </div>
+  </div>
+  <div class="content has-header padding" onload="listarPlantas()">
+    <div class="list no-border">
+      <div class="padding item white margin-button margin-top shadow" data="plantas" onclick="openPage('detalhes',{id: ${id}},detalhesPlanta)">
+        <div class="left">
+          <img class="avatar radius " src="/img/planta.jpeg">
+        </div>  
+        <h2>
+          <strong>${nomeCientifico}</strong>
+        </h2>
+        <p class="text-grey">${classificacao}</p>
+        <p class="text-green">${dominio}</p>
+      </div>
+    </div>
+  </div>
+  <button class="green circle icon ion-plus shadow float-bottom-right" onclick="openPage('nova-planta')"></button>
+</div>
