@@ -22,7 +22,7 @@ function listarPlantas() {
 }
 
 PullToRefresh.init({
-  mainElement: '.content',
+  mainElement: '.recarregar',
   onRefresh: function () {
     MobileUI.ajax.get('https://plantas.rufine.com.br/plantas', (err, res) => {
       if (err) {

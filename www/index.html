@@ -12,22 +12,24 @@
 </head>
 
 <body>
-  <div class="content">
+  <div class="content fundo">
+    <div class="space"></div>
     <div class="row-center padding margin-top">
       <img class="avatar circle padding" src="/img/logo.png" style="height: 250px;">
     </div>
+    <div class="space"></div>
     <div class="row-center">
-      <div class="column">
+      <div class="column col-75">
         <div class="list no-border">
-          <div class="item label-float">
-            <label>Usuário</label>
-            <input type="text">
+          <div class="item radius icon ion-person grey-200">
+            <input type="text" placeholder="Usuário">
           </div>
-          <div class="item label-float">
-            <label>Senha</label>
-            <input type="password">
+          <div class="space"></div>
+          <div class="item radius icon ion-locked grey-200">
+            <input type="password" placeholder="Senha">
           </div>
-          <div class="item">
+          <div class="space"></div>
+          <div class="item radius grey-200 full">
             <button class="green radius full" onclick="openPage('home')">Acessar</button>
           </div>
         </div>
