@@ -73,15 +73,25 @@ function alterarPlanta() {
   backPage()
 }
 
-function login(){
+function login() {
   var usuario = MobileUI.objectByForm('formLogin')
   MobileUI.ajax.post('https://plantas.rufine.com.br/usuarios', usuario, (err, res) => {
-    if(res.body.message){
-      MobileUI.show('alert-error')
-      error.message = res.body.message
-    }else {
+    if (res.body.message) {
+      alert({
+        title: res.body.message,
+        message: 'Tente novamente',
+        buttons: [
+          {
+            label: 'OK',
+            onclick: function () {
+              closeAlert();
+            }
+          }
+        ]
+      })
+    } else {
       MobileUI.hide('alert-error')
-      openPage('home') 
+      openPage('home')
     }
   })
 }
