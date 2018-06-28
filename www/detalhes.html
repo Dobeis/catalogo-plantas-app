@@ -16,6 +16,13 @@
       <div class="item icon ion-ios-nutrition">
         <input type="text" id="classificacao" placeholder="Classificação">
       </div>
+      <div class="item align-center">
+        <label for="imagem">Selecionar uma imagem</label>
+        <input type="file" id="imagem" onchange="preVizualizarImagem(event)">
+      </div>
+      <div class="item align-center">
+        <img id="previa" src="http://placehold.it/180"/>
+      </div>
       <div class="item">
         <button class="red radius full" onclick="deletarPlanta()">Remover</button>
       </div>

@@ -39,13 +39,14 @@ function recarregar() {
 }
 
 function salvarPlanta() {
+  loadingElement('loading-salvar')
   var planta = MobileUI.objectByForm('formNovaPlanta')
-  planta.imagem = imagem  
+  planta.imagem = imagem
   MobileUI.ajax.post('https://plantas.rufine.com.br/plantas', planta, (err, res) => {
-  err ? console.log('Erro ao salvar planta') : listarPlantas()
+    err ? console.log('Erro ao salvar planta') : backPage()
   })
   MobileUI.clearForm('formNovaPlanta')
-  // backPage()
+  
 }
 
 function detalhesPlanta(params) {
@@ -76,6 +77,7 @@ function alterarPlanta() {
 }
 
 function login() {
+  loadingElement('loading-login')
   var usuario = MobileUI.objectByForm('formLogin')
   MobileUI.ajax.post('https://plantas.rufine.com.br/usuarios', usuario, (err, res) => {
     if (res.body.message) {
@@ -91,8 +93,10 @@ function login() {
           }
         ]
       })
+      closeLoading('loading-login')
     } else {
       openPage('home')
+      closeLoading('loading-login')
     }
   })
 }
