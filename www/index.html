@@ -8,6 +8,8 @@
   <meta name="msapplication-tap-highlight" content="no">
   <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
   <link rel="stylesheet" type="text/css" href="css/index.css">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" type="image/png" href="./img/logo.png" />
   <title>Catálogo de Plantas</title>
 </head>
 
@@ -20,17 +22,17 @@
     <div class="space"></div>
     <div class="row-center">
       <div class="column col-75">
-        <div class="list no-border">
+        <div class="list no-border" id="formLogin">
           <div class="item radius icon ion-person grey-200">
-            <input type="text" placeholder="Usuário">
+            <input type="text" placeholder="Usuário" id="usuario">
           </div>
           <div class="space"></div>
           <div class="item radius icon ion-locked grey-200">
-            <input type="password" placeholder="Senha">
+            <input type="password" placeholder="Senha" id="senha">
           </div>
           <div class="space"></div>
           <div class="item radius grey-200 full">
-            <button class="green radius full" onclick="openPage('home')">Acessar</button>
+            <button class="green radius full" onclick="login()">Acessar</button>
           </div>
         </div>
       </div>

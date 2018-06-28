@@ -22,7 +22,7 @@ function listarPlantas() {
 }
 
 PullToRefresh.init({
-  mainElement: '.recarregar',
+  mainElement: '.content',
   onRefresh: function () {
     MobileUI.ajax.get('https://plantas.rufine.com.br/plantas', (err, res) => {
       if (err) {
@@ -68,4 +68,12 @@ function alterarPlanta() {
     err ? console.log('Erro ao alterar a planta') : listarPlantas()
   })
   backPage()
+}
+
+function login(){
+  var usuario = MobileUI.objectByForm('formLogin')
+  MobileUI.ajax.post('https://plantas.rufine.com.br/usuarios', usuario, (err, res) => {
+    err ? console.log('Zica') : listarPlantas()
+  })
+  openPage('home')
 }
