@@ -1,9 +1,7 @@
+
 var plantas = []
 var planta = {}
-var error = {}
-
-MobileUI.hide('alert-error')
-
+var imagem = ''
 MobileUI.ajax.get('https://plantas.rufine.com.br/plantas', (err, res) => {
   if (err) {
     return alert('Zicou a API parça!')
@@ -24,26 +22,30 @@ function listarPlantas() {
   })
 }
 
-PullToRefresh.init({
-  mainElement: '.content',
-  onRefresh: function () {
-    MobileUI.ajax.get('https://plantas.rufine.com.br/plantas', (err, res) => {
-      if (err) {
-        return alert('Zicou a API parça!')
-      } else {
-        plantas = res.body.plantas
-        console.log(plantas);
-      }
-    })
-  }
-});
+function recarregar() {
+  PullToRefresh.init({
+    mainElement: '.page',
+    onRefresh: function () {
+      MobileUI.ajax.get('https://plantas.rufine.com.br/plantas', (err, res) => {
+        if (err) {
+          return alert('Zicou a API parça!')
+        } else {
+          plantas = res.body.plantas
+          console.log(plantas);
+        }
+      })
+    }
+  });
+}
 
 function salvarPlanta() {
   var planta = MobileUI.objectByForm('formNovaPlanta')
+  planta.imagem = imagem  
   MobileUI.ajax.post('https://plantas.rufine.com.br/plantas', planta, (err, res) => {
-    err ? console.log('Erro ao salvar planta') : listarPlantas()
+  err ? console.log('Erro ao salvar planta') : listarPlantas()
   })
-  backPage()
+  MobileUI.clearForm('formNovaPlanta')
+  // backPage()
 }
 
 function detalhesPlanta(params) {
@@ -90,8 +92,19 @@ function login() {
         ]
       })
     } else {
-      MobileUI.hide('alert-error')
       openPage('home')
     }
   })
+}
+
+function preVizualizarImagem(event) {
+  var reader = new FileReader();
+  reader.addEventListener("load", function (e) {
+    imagem = e.target.result
+  })
+  reader.onload = function () {
+    var output = document.getElementById('previa');
+    output.src = reader.result;
+  }
+  reader.readAsDataURL(event.target.files[0])
 }
