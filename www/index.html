@@ -23,17 +23,21 @@
     <div class="row-center">
       <div class="column col-75">
         <div class="list no-border" id="formLogin">
-          <div class="item radius icon ion-person grey-200">
+          <div class="item radius icon shadow ion-person grey-200">
             <input type="text" placeholder="Usuário" id="usuario">
           </div>
           <div class="space"></div>
-          <div class="item radius icon ion-locked grey-200">
+          <div class="item radius shadow icon ion-locked grey-200">
             <input type="password" placeholder="Senha" id="senha">
           </div>
           <div class="space"></div>
           <div class="item radius grey-200 full">
             <button class="green radius full" onclick="login()">Acessar</button>
           </div>
+        </div>
+        <br>
+        <div class="padding shadow radius red align-center" data="error" id="alert-error">
+          <h1>${message}</h1>
         </div>
       </div>
     </div>

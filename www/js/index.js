@@ -1,5 +1,8 @@
 var plantas = []
 var planta = {}
+var error = {}
+
+MobileUI.hide('alert-error')
 
 MobileUI.ajax.get('https://plantas.rufine.com.br/plantas', (err, res) => {
   if (err) {
@@ -73,7 +76,12 @@ function alterarPlanta() {
 function login(){
   var usuario = MobileUI.objectByForm('formLogin')
   MobileUI.ajax.post('https://plantas.rufine.com.br/usuarios', usuario, (err, res) => {
-    err ? console.log('Zica') : listarPlantas()
+    if(res.body.message){
+      MobileUI.show('alert-error')
+      error.message = res.body.message
+    }else {
+      MobileUI.hide('alert-error')
+      openPage('home') 
+    }
   })
-  openPage('home')
 }
