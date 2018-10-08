@@ -4,7 +4,7 @@ var planta = {}
 var imagem = ''
 MobileUI.ajax.get('https://plantas.rufine.com.br/plantas', (err, res) => {
   if (err) {
-    return alert('Zicou a API parça!')
+    showAlertError();
   } else {
     plantas = res.body.plantas
     console.log(plantas);
@@ -14,7 +14,7 @@ MobileUI.ajax.get('https://plantas.rufine.com.br/plantas', (err, res) => {
 function listarPlantas() {
   MobileUI.ajax.get('https://plantas.rufine.com.br/plantas', (err, res) => {
     if (err) {
-      return alert('Zicou a API parça!')
+      showAlertError();
     } else {
       plantas = res.body.plantas
       console.log(plantas);
@@ -28,7 +28,7 @@ function recarregar() {
     onRefresh: function () {
       MobileUI.ajax.get('https://plantas.rufine.com.br/plantas', (err, res) => {
         if (err) {
-          return alert('Zicou a API parça!')
+          showAlertError();
         } else {
           plantas = res.body.plantas
           console.log(plantas);
@@ -52,7 +52,7 @@ function salvarPlanta() {
 function detalhesPlanta(params) {
   MobileUI.ajax.get(`https://plantas.rufine.com.br/plantas/${params.id}`, (err, res) => {
     if (err) {
-      return alert('Zicou a API parça!')
+      showAlertError();
     } else {
       planta = res.body.planta
       MobileUI.formByObject('formDetalhesPlanta', planta)
@@ -111,4 +111,8 @@ function preVizualizarImagem(event) {
     output.src = reader.result;
   }
   reader.readAsDataURL(event.target.files[0])
+}
+
+function showAlertError() {
+  return alert('Zicou a API parça!')
 }
